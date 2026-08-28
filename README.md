@@ -9,6 +9,7 @@
 Here is a python website i thought was interesting: https://analyticsindiamag.com/it-services/why-jupyter-notebooks-are-so-popular-among-data-scientists
 
 <img width="398" height="398" alt="TC overwhelmed" src="https://github.com/user-attachments/assets/d4910e5f-67e9-4732-bfe8-0a212eead07b" />
+
 Just feeling overwhelmed with work-life balance and wondering how to learn it all. 
 **But I am still happy to learn it all!**
 
