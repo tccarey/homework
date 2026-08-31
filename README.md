@@ -6,7 +6,7 @@
 2. I want to get a better at utilizing code within github as well as using a legit IDE doing so.
 3. I want to build a capstone to have an official project to talk through with potential employers.
 
-Here is a python website i thought was interesting: https://analyticsindiamag.com/it-services/why-jupyter-notebooks-are-so-popular-among-data-scientists
+Here is a python website i thought was interesting: [Why are Jupyter Notebooks so Popular](https://analyticsindiamag.com/it-services/why-jupyter-notebooks-are-so-popular-among-data-scientists)
 
 <img width="398" height="398" alt="TC overwhelmed" src="https://github.com/user-attachments/assets/d4910e5f-67e9-4732-bfe8-0a212eead07b" />
 
