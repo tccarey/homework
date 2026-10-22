@@ -33,8 +33,8 @@ WHERE ElectricVehicleType = 'Battery Electric Vehicle (BEV)'
 ```SQL
 SELECT Make, Model
 FROM EVRegistry
-WHERE BaseMSRP >= 20000
-AND BaseMSRP <35000
+WHERE BaseMSRP BETWEEN  >= 20000 AND <= 35000
+--AND BaseMSRP <= 35000
 ```
 
 # 7.2 HW Questions 
@@ -55,7 +55,8 @@ WHERE VIN LIKE '%3E1EA1J'
 ```SQL
 SELECT ModelYear, Make, Model, ElectricVehicleType, ElectricRange
 FROM EVRegistry
-ORDER BY ModelYear DESC
+WHERE Make IN ('TESLA', 'CHEVROLET')
+ORDER BY Make, ModelYear DESC
 ```
 4. Using EVCharging, Write a query to find out how many many times those stations were used. Order them by the most used to the least used and limit the output to 5 records. 
 ```SQL
@@ -91,10 +92,11 @@ ORDER BY 2,3
 
 1. Using EVCharging, Which day of the week has the highest average charging time? Round the answer to 2 decimal points.
 ```SQL
-SELECT Weekday, ROUND(SUM(kwhTotal),2) as 'totalPower'
+SELECT Weekday, ROUND(avg(chargeTimeHrs),2) as 'AverageChargingTime'
 FROM EVcharging
 GROUP BY weekday
-ORDER BY totalPower DESC
+ORDER BY AverageChargingTime DESC
+LIMIT 1
 ```
 
 2. Using, EV charging, Find the total power consumed from charging EV's by each User. Return the `userId` and name the calculated column, `totalPower`. Round the answer to 2 deciaml points and list the out put in highest to lowest order. Limit the order to the top 15 users. 
@@ -108,10 +110,11 @@ LIMIT 15
 
 3. Using dimfacility and factCharge, write a query to find out which type of facility (GROUP BY) has the most amount of charging stations. Return `type Facility` and name the calculated column `numStation`. Order the result set from highest to lowest number of charging stations.  
 ```SQL
-select stationId, count(*) as numStation, typeFacility
+select df.typeFacility, count(fc.stationId) as numStation 
 from factCharge fc
 inner join dimFacility df on fc.facilityID = df.FacilityKey
---this is only giving me one row... (ToT)
+GROUP BY df.typeFacility
+ORDER BY numStation DESC
 ```
 
 4. In your own words, Briefly explain Primary Keys and Foreign Keys. 
@@ -127,9 +130,8 @@ inner join dimFacility df on fc.facilityID = df.FacilityKey
 SELECT userId, MIN(chargeTimeHrs) as 'minhours', MAX(chargeTimeHrs) as 'maxHours'
 FROM EVCharging
 GROUP BY userId
-HAVING chargeTimeHrs < 1 
+HAVING MIN(chargeTimeHrs) > 1 
 ORDER BY 2,3
---i am only getting one row here as well. 
 ```
 ## When done with homework
 
